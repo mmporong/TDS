@@ -10,11 +10,11 @@
       "hash": "0a98b387a92cf9f1f47012fc46d4cf33576e5916"
     },
     "com.dannect.toolkit": {
-      "version": "https://github.com/Dannect/SimGround_Package.git#feat/git-automation",
+      "version": "https://github.com/Dannect/SimGround_Package.git",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "62b770e0dfec4427db92748f89ab0e2754d68a61"
+      "hash": "d59e0f85d7b61cfafdeb4457fe50825b851a23d3"
     },
     "com.justinpbarnett.unity-mcp": {
       "version": "https://github.com/justinpbarnett/unity-mcp.git?path=/UnityMcpBridge",
