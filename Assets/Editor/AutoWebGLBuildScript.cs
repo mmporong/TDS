@@ -91,9 +91,10 @@ public class AutoWebGLBuildScript
         Debug.Log($"ğŸ® ì œí’ˆëª…: {PlayerSettings.productName}");
         Debug.Log($"ğŸ¢ íšŒì‚¬ëª…: {PlayerSettings.companyName}");
         Debug.Log($"ğŸ“‹ ë²„ì „: {PlayerSettings.bundleVersion}");
-        // Unity 6 í˜¸í™˜ì„±: GetIcons ì‚¬ìš©
+        // Unity 6 í˜¸í™˜ì„±: ì•„ì´ì½˜ í™•ì¸ (ê°„ë‹¨í•œ ë°©ë²• ì‚¬ìš©)
         try
         {
+            // Unity 6ì—ì„œëŠ” BuildTargetGroup.WebGL ì‚¬ìš©
             var icons = PlayerSettings.GetIcons(NamedBuildTarget.WebGL, IconKind.Application);
             Debug.Log($"ğŸ–¼ï¸ ê¸°ë³¸ ì•„ì´ì½˜: {(icons != null && icons.Length > 0 ? "ì„¤ì •ë¨" : "ì—†ìŒ")}");
         }
