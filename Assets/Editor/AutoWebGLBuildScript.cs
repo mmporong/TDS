@@ -91,7 +91,16 @@ public class AutoWebGLBuildScript
         Debug.Log($"ğŸ® ì œí’ˆëª…: {PlayerSettings.productName}");
         Debug.Log($"ğŸ¢ íšŒì‚¬ëª…: {PlayerSettings.companyName}");
         Debug.Log($"ğŸ“‹ ë²„ì „: {PlayerSettings.bundleVersion}");
-        Debug.Log($"ğŸ–¼ï¸ ê¸°ë³¸ ì•„ì´ì½˜: {(PlayerSettings.GetIconsForTargetGroup(BuildTargetGroup.Unknown) != null ? "ì„¤ì •ë¨" : "ì—†ìŒ")}");
+        // Unity 6 í˜¸í™˜ì„±: GetIcons ì‚¬ìš©
+        try
+        {
+            var icons = PlayerSettings.GetIcons(NamedBuildTarget.WebGL, IconKind.Application);
+            Debug.Log($"ğŸ–¼ï¸ ê¸°ë³¸ ì•„ì´ì½˜: {(icons != null && icons.Length > 0 ? "ì„¤ì •ë¨" : "ì—†ìŒ")}");
+        }
+        catch
+        {
+            Debug.Log($"ğŸ–¼ï¸ ê¸°ë³¸ ì•„ì´ì½˜: í™•ì¸ ë¶ˆê°€");
+        }
         
         // WebGL ì „ìš© ì„¤ì •ë“¤
         Debug.Log($"ğŸŒ WebGL í…œí”Œë¦¿: {PlayerSettings.WebGL.template}");
@@ -100,7 +109,8 @@ public class AutoWebGLBuildScript
         Debug.Log($"âš ï¸ WebGL ì˜ˆì™¸ ì§€ì›: {PlayerSettings.WebGL.exceptionSupport}");
         Debug.Log($"ğŸ’½ WebGL ë°ì´í„° ìºì‹±: {PlayerSettings.WebGL.dataCaching}");
         Debug.Log($"ğŸ”§ WebGL ë§ì»¤ íƒ€ê²Ÿ: {PlayerSettings.WebGL.linkerTarget}");
-        Debug.Log($"ğŸ¯ WebGL ì½”ë“œ ìµœì í™”: {PlayerSettings.WebGL.codeOptimization}");
+        // Unity 6ì—ì„œ codeOptimization ì œê±°ë¨
+        Debug.Log($"ğŸ¯ WebGL ìµœì í™”: Unity 6ì—ì„œ ìë™ ê´€ë¦¬");
         Debug.Log("=====================================");
     }
     
@@ -136,12 +146,9 @@ public class AutoWebGLBuildScript
             Debug.Log("âœ… Deep Profiling ì§€ì› í™œì„±í™”");
         }
         
-        // Auto Run Player ì„¤ì • í™•ì¸
-        if (EditorUserBuildSettings.autoRunPlayer)
-        {
-            options |= BuildOptions.AutoRunPlayer;
-            Debug.Log("âœ… ë¹Œë“œ í›„ ìë™ ì‹¤í–‰ í™œì„±í™”");
-        }
+        // Unity 6ì—ì„œ autoRunPlayer ì œê±°ë¨
+        // WebGLì€ ë¸Œë¼ìš°ì €ì—ì„œ ì‹¤í–‰ë˜ë¯€ë¡œ AutoRunPlayer ì˜µì…˜ ë¶ˆí•„ìš”
+        Debug.Log("â„¹ï¸ WebGL ë¹Œë“œëŠ” ë¸Œë¼ìš°ì €ì—ì„œ ìˆ˜ë™ ì‹¤í–‰");
         
         return options;
     }
